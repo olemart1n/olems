@@ -1,0 +1,88 @@
+@import url("./iphone.css");
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #312d2d;
+    background: linear-gradient(to bottom, rgb(34, 33, 33), #312d2d);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+
+h1 {
+    font-size: 1.4em;
+    line-height: 1.1;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+header div a {
+    color: white;
+}
+
+main {
+    max-width: 1280px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.handlelista_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.handlelista_links > * {
+    color: white;
+}
+.handlelista_links > *:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}

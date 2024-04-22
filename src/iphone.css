@@ -1,0 +1,227 @@
+.iphone {
+    width: 320px;
+    height: 624px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 35px;
+    /* outline: 2px solid rgb(102, 100, 100); */
+    box-shadow: inset 0 0 0 1px rgb(102, 100, 100), inset 0 0 0 8px black;
+    position: relative;
+}
+
+.iphone::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: calc(50% / 2);
+    border-radius: 0 0 10px 10px;
+    width: 50%;
+    height: 24px;
+    background-color: black;
+}
+.iphone::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    transform: translate(-50%);
+    left: 50%;
+    border-radius: 10%;
+    bottom: 12px;
+    width: 30%;
+    border-radius: 10px;
+    height: 6px;
+    background-color: black;
+}
+
+.iphone .clock {
+    margin: 0;
+    position: absolute;
+    top: 0.8rem;
+    font-size: small;
+    left: 1.6rem;
+    color: black;
+    font-weight: 600;
+}
+
+.iphone .signal {
+    position: absolute;
+    right: 17%;
+    top: 1rem;
+    color: black;
+    height: 1rem;
+    width: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iphone .signal .col {
+    width: 4px;
+    min-height: 3px;
+    background-color: black;
+    align-self: baseline;
+    border-radius: 3px;
+}
+
+.col_1 {
+    height: 10%;
+}
+.col_2 {
+    height: 30%;
+}
+.col_3 {
+    height: 60%;
+}
+.col_4 {
+    height: 100%;
+}
+
+.iphone .signal::after {
+    content: "5G";
+    font-size: x-small;
+    position: absolute;
+    right: -16px;
+    font-weight: 600;
+    bottom: 0;
+    bottom: -3px;
+}
+.handlelista-screenshot {
+    width: 95%;
+    margin-left: 8px;
+    margin-top: 3rem;
+    display: block;
+    position: absolute;
+}
+
+.safari_bottom {
+    width: 95%;
+    bottom: 8px;
+    margin-left: 8px;
+    border-radius: 0 0 25px 25px;
+    position: absolute;
+    height: 5rem;
+    z-index: 5;
+    background-color: rgb(240, 240, 240);
+}
+.safari_url_input {
+    width: 80%;
+    height: 2rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin: auto;
+    margin-top: 0.4rem;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.safari_url_input p {
+    color: black;
+    font-size: smaller;
+}
+.safari_options {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 2rem;
+}
+
+.option {
+    height: 0.8rem;
+    width: 2rem;
+    display: flex;
+    place-content: center;
+}
+
+.arrow_left {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-left: 2px solid rgb(91, 153, 241);
+    border-bottom: 2px solid rgb(91, 153, 241);
+    transform: rotate(45deg);
+    margin-top: 3px;
+}
+.arrow_right {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-right: 2px solid rgb(91, 153, 241);
+    border-top: 2px solid rgb(91, 153, 241);
+    transform: rotate(45deg);
+    margin-top: 3px;
+}
+.share_button {
+    height: 0.8rem;
+    width: 0.8rem;
+    border: 2px solid rgb(91, 153, 241);
+    border-radius: 3px;
+}
+
+.book {
+    height: 0.8rem;
+    width: 1rem;
+    display: flex;
+}
+.book_page1 {
+    height: 0.8rem;
+    width: 0.4rem;
+    border: 2px solid rgb(91, 153, 241);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: none;
+    position: relative;
+}
+.book_page1::after {
+    content: "";
+    height: 0.4rem;
+    width: 0.6rem;
+    /* outline: 2px solid rgb(91, 153, 241); */
+    border-top: 3px solid rgb(91, 153, 241);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    left: -2px;
+}
+.book_page2 {
+    height: 0.8rem;
+    width: 0.4rem;
+    border: 2px solid rgb(91, 153, 241);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    border-bottom: none;
+}
+.book_page2::after {
+    content: "";
+    height: 0.4rem;
+    width: 0.6rem;
+    /* outline: 2px solid rgb(91, 153, 241); */
+    border-top: 3px solid rgb(91, 153, 241);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    left: -3px;
+}
+.tabs {
+    height: 0.8rem;
+    width: 0.8rem;
+    position: relative;
+}
+.tab {
+    height: 0.6rem;
+    width: 0.6rem;
+    border: 2px solid rgb(91, 153, 241);
+    border-radius: 2px;
+    position: absolute;
+}
+
+.tab1 {
+    top: 0px;
+    left: 0;
+}
+
+.tab2 {
+    left: 4px;
+    top: 4px;
+    background-color: rgb(240, 240, 240);
+}
