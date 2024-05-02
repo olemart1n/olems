@@ -28,6 +28,10 @@ h1 {
     line-height: 1.1;
 }
 
+a h1 {
+    color: white;
+}
+
 body {
     margin: 0;
     display: flex;

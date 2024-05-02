@@ -49,11 +49,29 @@
     </div>
 
   </header>
-  <main></main>
+  <main>
+    <div id="select_container">
+      <label for="program">Velg program:</label>
+      <select id="program" name="program">
+        <option value="dropdown">dropdown</option>
+        <option value="underkropp">underkropp</option>
+        <option value="overkropp">overkropp</option>
+        <option value="fullkropp">fullkropp</option>
+      </select>
+    </div>
+    <div id="program-data">
+
+    </div>
+    <div id="stored_trainings"></div>
+    <dialog>
+      <button>Lukk</button>
+    </dialog>
+
+  </main>
   <footer>
-    <a href="/trening.html">Trening</a>
+    <a href="/">Tilbake</a>
   </footer>
-  <script type="module" src="/src/JS/main.ts"></script>
+  <script type="module" src="/src/JS/trening/index.ts"></script>
 </body>
 
 </html>
