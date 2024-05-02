@@ -3,7 +3,6 @@ const closeBtn = document.querySelector("dialog button");
 import { state } from "./state";
 export const openDialog = (i: number) => {
     dialog?.showModal();
-    const programToRender = state.savedExercises[i];
 
     state.savedExercises[i].data.forEach((each) => {
         dialog?.insertAdjacentHTML(

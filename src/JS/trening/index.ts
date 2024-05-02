@@ -64,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
     document.querySelectorAll<HTMLButtonElement>(".submit-btn")!.forEach((btn) => {
-        btn.addEventListener("click", function (e) {
+        btn.addEventListener("click", function () {
             this.style.backgroundColor = "lightGreen";
         });
     });
