@@ -1,14 +1,31 @@
 @import url("./global.css");
-.step_row {
-    display: grid;
-    grid-template-columns: 35% 15% 25% 15% 10%;
+form {
+    padding: 0;
+    margin: 0;
+}
+.form_exercise {
+    display: flex;
+    width: 95%;
+    margin: auto;
     border: 1px solid white;
+    align-items: center;
     border-radius: 5px;
     box-shadow: 0 2px 5px 5px rgba(94, 93, 93, 0.1);
     margin-top: 5px;
+    color: white;
+    padding: 0;
 }
 
-.hidden {
+.form_exercise > div {
+    width: 75%;
+    text-align: center;
+}
+
+.form_exercise_button {
+    width: 25%;
+}
+
+.form_exercise .hidden {
     visibility: hidden;
     display: none;
 }
@@ -23,9 +40,6 @@
     position: absolute;
     width: 1px;
     white-space: nowrap;
-}
-#program-data {
-    padding: 2px;
 }
 #stored_trainings {
     width: 90%;

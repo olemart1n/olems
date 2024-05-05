@@ -1,9 +1,24 @@
 import "../../CSS/trening.css";
-import type { Exercise } from "./definitions";
 import { fullBody, lowerBody, upperBody } from "./definitions";
 import { programForm } from "./form";
 import { state } from "./state";
 import { openDialog } from "./dialog";
+const form = document.querySelector("form");
+
+form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const localStored = localStorage.getItem("storedExercises");
+    state.savedExercises = JSON.parse(localStored!);
+    state.savedExercises.push({
+        prog: state.currentProgram,
+        data: state.completedExercises,
+        date: new Date(),
+    });
+    localStorage.removeItem("storedExercises");
+    localStorage.setItem("storedExercises", JSON.stringify(state.savedExercises));
+    form.reset();
+    renderStoredTrainings();
+});
 
 export const renderStoredTrainings = () => {
     document.querySelector<HTMLDivElement>("#stored_trainings")!.innerHTML = "";
@@ -21,7 +36,7 @@ export const renderStoredTrainings = () => {
     });
 };
 
-const checkChosenProgram = (prog: string = "overkropp") => {
+const displayChosenProgram = (prog: string = "overkropp") => {
     if (prog === "fullkropp") {
         programForm(fullBody);
     } else if (prog === "overkropp") {
@@ -42,30 +57,8 @@ if (!localStorage.getItem("storedExercises")) {
 }
 
 document.querySelector<HTMLSelectElement>("#program")?.addEventListener("change", function () {
-    checkChosenProgram(this.value);
+    displayChosenProgram(this.value);
     state.currentProgram = this.value;
 });
 
-checkChosenProgram();
-
-window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll<HTMLFormElement>("form").forEach((f) => {
-        f.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            const newExercise: Exercise = {
-                exercise: data.exercise as string,
-                sets: data.sets as string,
-                reps: data.reps as string,
-                weight: data.kg as string,
-            };
-            state.completedExercises.push(newExercise);
-        });
-    });
-    document.querySelectorAll<HTMLButtonElement>(".submit-btn")!.forEach((btn) => {
-        btn.addEventListener("click", function () {
-            this.style.backgroundColor = "lightGreen";
-        });
-    });
-});
+displayChosenProgram();
