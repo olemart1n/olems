@@ -1,14 +1,12 @@
 import "../../CSS/trening.css";
 import { fullBody, lowerBody, upperBody } from "./definitions";
-import { programForm } from "./form";
+import { programForm, resetButtonsColors } from "./form";
 import { state } from "./state";
 import { openDialog } from "./dialog";
 const form = document.querySelector("form");
-
+const prevExercises = document.querySelector("#prev_exercises");
 form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    const localStored = localStorage.getItem("storedExercises");
-    state.savedExercises = JSON.parse(localStored!);
     state.savedExercises.push({
         prog: state.currentProgram,
         data: state.completedExercises,
@@ -16,12 +14,14 @@ form?.addEventListener("submit", (e) => {
     });
     localStorage.removeItem("storedExercises");
     localStorage.setItem("storedExercises", JSON.stringify(state.savedExercises));
+    state.completedExercises = [];
     form.reset();
-    renderStoredTrainings();
+    resetButtonsColors();
+    renderPrevExercises();
 });
 
-export const renderStoredTrainings = () => {
-    document.querySelector<HTMLDivElement>("#stored_trainings")!.innerHTML = "";
+export const renderPrevExercises = () => {
+    prevExercises!.innerHTML = "";
     state.savedExercises.forEach((saved, i) => {
         const button = document.createElement("button");
         button.addEventListener("click", () => {
@@ -30,9 +30,7 @@ export const renderStoredTrainings = () => {
         button.innerHTML = `<button key=${i}>${saved.prog} | ${saved.date
             .toString()
             .substring(5, 10)}</button>`;
-        document
-            .querySelector<HTMLDivElement>("#stored_trainings")!
-            .insertAdjacentElement("afterbegin", button);
+        prevExercises!.insertAdjacentElement("afterbegin", button);
     });
 };
 
@@ -48,17 +46,10 @@ const displayChosenProgram = (prog: string = "overkropp") => {
     }
 };
 
-if (!localStorage.getItem("storedExercises")) {
-    localStorage.setItem("storedExercises", "[]");
-} else {
-    const stored = localStorage.getItem("storedExercises");
-    state.savedExercises = JSON.parse(stored!);
-    renderStoredTrainings();
-}
-
 document.querySelector<HTMLSelectElement>("#program")?.addEventListener("change", function () {
     displayChosenProgram(this.value);
     state.currentProgram = this.value;
 });
 
 displayChosenProgram();
+renderPrevExercises();

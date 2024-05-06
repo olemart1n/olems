@@ -1,11 +1,13 @@
 const dialog = document.querySelector("dialog");
+const dialogDiv = document.querySelector("#previous_exercise_program");
+
 const closeBtn = document.querySelector("dialog button");
 import { state } from "./state";
 export const openDialog = (i: number) => {
     dialog?.showModal();
 
     state.savedExercises[i].data.forEach((each) => {
-        dialog?.insertAdjacentHTML(
+        dialogDiv?.insertAdjacentHTML(
             "afterbegin",
             `
             
@@ -23,5 +25,6 @@ export const openDialog = (i: number) => {
 };
 
 closeBtn?.addEventListener("click", () => {
+    dialogDiv!.innerHTML = "";
     dialog?.close();
 });

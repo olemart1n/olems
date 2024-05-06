@@ -48,3 +48,10 @@ export const programForm = (prog: Exercise[]) => {
         .querySelector<HTMLFormElement>("form")!
         .insertAdjacentHTML("beforeend", "<button>Loggfør</button>");
 };
+
+export const resetButtonsColors = () => {
+    const btns = document.querySelectorAll<HTMLButtonElement>(".form_exercise_button");
+    btns.forEach((btn) => {
+        btn.style.backgroundColor = "#808080";
+    });
+};
