@@ -1,2 +1,6 @@
 @import url("./global.css");
 @import url("./iphone.css");
+
+main {
+    margin: auto;
+}
