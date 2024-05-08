@@ -41,17 +41,11 @@ form {
     width: 1px;
     white-space: nowrap;
 }
-#stored_trainings {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
 
 #select_container {
     text-align: center;
     margin: 5px auto;
+    color: white;
 }
 
 #select_container select {
@@ -59,6 +53,27 @@ form {
     outline: 1px solid white;
     border: none;
     padding: 4px;
+}
+
+#submit_btn {
+    display: block;
+    margin: 1rem auto;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(129, 114, 114);
+}
+
+#prev_exercises {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#prev_exercises button {
+    margin: 0;
+    padding: 0;
 }
 
 dialog {
@@ -70,7 +85,7 @@ dialog {
 }
 dialog button {
     position: fixed;
-    bottom: 3px;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -84,11 +99,13 @@ dialog button {
     margin: 0;
     border: 1px solid white;
     border-radius: 1rem;
+    margin: 1rem auto;
 }
 .stored_exercise_div p {
     text-align: center;
     width: 100%;
     padding: 0;
+    margin: 0;
 }
 .stored_exercise_div div {
     padding: 0;

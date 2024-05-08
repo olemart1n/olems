@@ -9,9 +9,3 @@ export const state: State = {
     currentProgram: "overkropp",
     savedExercises: [],
 };
-
-if (!localStorage.getItem("storedExercises")) {
-    localStorage.setItem("storedExercises", "[]");
-} else {
-    state.savedExercises = JSON.parse(localStorage.getItem("storedExercises")!);
-}

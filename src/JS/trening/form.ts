@@ -46,7 +46,7 @@ export const programForm = (prog: Exercise[]) => {
     });
     document
         .querySelector<HTMLFormElement>("form")!
-        .insertAdjacentHTML("beforeend", "<button>Loggfør</button>");
+        .insertAdjacentHTML("beforeend", "<button id='submit_btn'>Loggfør</button>");
 };
 
 export const resetButtonsColors = () => {

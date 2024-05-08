@@ -5,6 +5,13 @@ import { state } from "./state";
 import { openDialog } from "./dialog";
 const form = document.querySelector("form");
 const prevExercises = document.querySelector("#prev_exercises");
+
+if (!localStorage.getItem("storedExercises")) {
+    localStorage.setItem("storedExercises", "[]");
+} else {
+    state.savedExercises = JSON.parse(localStorage.getItem("storedExercises")!);
+}
+
 form?.addEventListener("submit", (e) => {
     e.preventDefault();
     state.savedExercises.push({
