@@ -1,8 +1,9 @@
 import "../../CSS/trening.css";
 import { fullBody, lowerBody, upperBody } from "./definitions";
-import { programForm, resetButtonsColors } from "./form";
+import { displayProgramForm, resetButtonsColors, addExerciseToObject } from "./form";
 import { state } from "./state";
 import { openDialog } from "./dialog";
+
 const form = document.querySelector("form");
 const prevExercises = document.querySelector("#prev_exercises");
 
@@ -14,6 +15,11 @@ if (!localStorage.getItem("storedExercises")) {
 
 form?.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    for (let i = 0; i <= 4; i++) {
+        addExerciseToObject(i.toString());
+    }
+
     state.savedExercises.push({
         prog: state.currentProgram,
         data: state.completedExercises,
@@ -43,11 +49,11 @@ export const renderPrevExercises = () => {
 
 const displayChosenProgram = (prog: string = "overkropp") => {
     if (prog === "fullkropp") {
-        programForm(fullBody);
+        displayProgramForm(fullBody);
     } else if (prog === "overkropp") {
-        programForm(upperBody);
+        displayProgramForm(upperBody);
     } else if (prog === "underkropp") {
-        programForm(lowerBody);
+        displayProgramForm(lowerBody);
     } else {
         return;
     }

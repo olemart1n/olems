@@ -5,6 +5,7 @@ form {
 }
 .form_exercise {
     display: flex;
+    flex-direction: column;
     width: 95%;
     margin: auto;
     border: 1px solid white;
@@ -16,15 +17,10 @@ form {
     padding: 0;
 }
 
-.form_exercise > div {
-    width: 75%;
-    text-align: center;
+.form_exercise input {
+    min-width: 10rem;
+    margin-top: 4px;
 }
-
-.form_exercise_button {
-    width: 25%;
-}
-
 .form_exercise .hidden {
     visibility: hidden;
     display: none;

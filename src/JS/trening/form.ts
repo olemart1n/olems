@@ -8,7 +8,7 @@ const getSpanInnerHTML = (spanEl: HTMLSpanElement | null) => {
     return spanEl?.innerHTML as string;
 };
 
-const addExerciseToObject = (key: string) => {
+export const addExerciseToObject = (key: string) => {
     const newExercise: Exercise = {
         exercise: getSpanInnerHTML(document.querySelector(`[data-exercise="${key}"]`) ?? null),
         sets: getSpanInnerHTML(document.querySelector(`[data-sets="${key}"]`) ?? null),
@@ -17,32 +17,32 @@ const addExerciseToObject = (key: string) => {
     };
     state.completedExercises.push(newExercise);
 };
-export const programForm = (prog: Exercise[]) => {
+export const displayProgramForm = (prog: Exercise[]) => {
     document.querySelector<HTMLFormElement>("form")!.innerHTML = "";
 
     prog.forEach((step, i) => {
-        const button = document.createElement("button");
-        button.classList.add("form_exercise_button");
-        button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>`;
-        button.setAttribute("type", "button");
-        button.addEventListener("click", () => {
-            addExerciseToObject(i.toString());
-            button.style.backgroundColor = "rgb(146, 222, 146)";
-        });
+        // addExerciseToObject(i.toString());
         const parentDiv = document.createElement("div");
         parentDiv.classList.add("form_exercise");
+        parentDiv.innerHTML += `
+        <div>
+            <p ><span data-exercise="${i}">${step.exercise}</span>, <span data-sets="${i}">${step.sets}</span> sett</p>
+        </div>
+        <input name="exercise" class="hidden" value="${step.exercise}" name="sets"/>
+    `;
+        const inputReps = document.createElement("input");
+        inputReps.classList.add("reps");
+        inputReps.placeholder = step.reps;
+        inputReps.setAttribute("data-reps", i.toString());
+        parentDiv.insertAdjacentElement("beforeend", inputReps);
+        const inputWeight = document.createElement("input");
+        inputWeight.classList.add("weight");
+        inputWeight.placeholder = "vekt";
+        inputReps.setAttribute("data-weight", i.toString());
+        parentDiv.insertAdjacentElement("beforeend", inputWeight);
         document
             .querySelector<HTMLFormElement>("form")!
             .insertAdjacentElement("afterbegin", parentDiv);
-        parentDiv.innerHTML += `
-            <div>
-                <p ><span data-exercise="${i}">${step.exercise}</span>, <span data-sets="${i}">${step.sets}</span> sett</p>
-                <input data-reps="${i}" placeholder="reps: ${step.reps}" name="reps"/>
-                <input data-weight="${i}" placeholder="vekt" name="kg"/>
-            </div>
-            <input name="exercise" class="hidden" value="${step.exercise}" name="sets"/>
-        `;
-        parentDiv.insertAdjacentElement("beforeend", button);
     });
     document
         .querySelector<HTMLFormElement>("form")!
