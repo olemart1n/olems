@@ -52,7 +52,3 @@ function input(attr: string, className: string, i: string) {
     input.setAttribute(attr, i);
     return input;
 }
-
-const test = (attr: string) => {
-    console.log(attr);
-};

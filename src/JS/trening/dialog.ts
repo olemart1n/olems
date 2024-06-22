@@ -6,7 +6,7 @@ import { state } from "./state";
 export const openDialog = (i: number) => {
     dialog?.showModal();
 
-    state.savedExercises[i].data.forEach((each) => {
+    state.storedLocal[i].data.forEach((each) => {
         dialogDiv?.insertAdjacentHTML(
             "afterbegin",
             `
