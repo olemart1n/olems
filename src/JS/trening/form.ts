@@ -1,5 +1,4 @@
-import type { Exercise } from "./definitions";
-import { state } from "./state";
+import { type Exercise, state } from "./state";
 
 const findValue = (inputEl: HTMLInputElement | null) => {
     return inputEl ? inputEl.value : "";
@@ -15,7 +14,7 @@ export const addExerciseToObject = (key: string) => {
         reps: findValue(document.querySelector(`[data-reps="${key}"]`) ?? null),
         weight: findValue(document.querySelector(`[data-weight="${key}"]`) ?? null),
     };
-    state.completedExercises.push(newExercise);
+    state.currentProgram.push(newExercise);
 };
 export const displayProgramForm = (prog: Exercise[]) => {
     document.querySelector<HTMLFormElement>("form")!.innerHTML = "";
@@ -30,16 +29,14 @@ export const displayProgramForm = (prog: Exercise[]) => {
         </div>
         <input name="exercise" class="hidden" value="${step.exercise}" name="sets"/>
     `;
-        const inputReps = document.createElement("input");
-        inputReps.classList.add("reps");
+
+        const inputReps = input("data-reps", "reps", i.toString());
         inputReps.placeholder = step.reps;
-        inputReps.setAttribute("data-reps", i.toString());
+        const inputWeight = input("data-weight", "weight", i.toString());
+        //
         parentDiv.insertAdjacentElement("beforeend", inputReps);
-        const inputWeight = document.createElement("input");
-        inputWeight.classList.add("weight");
-        inputWeight.placeholder = "vekt";
-        inputReps.setAttribute("data-weight", i.toString());
         parentDiv.insertAdjacentElement("beforeend", inputWeight);
+        //
         document
             .querySelector<HTMLFormElement>("form")!
             .insertAdjacentElement("afterbegin", parentDiv);
@@ -49,9 +46,13 @@ export const displayProgramForm = (prog: Exercise[]) => {
         .insertAdjacentHTML("beforeend", "<button id='submit_btn'>Loggfør</button>");
 };
 
-export const resetButtonsColors = () => {
-    const btns = document.querySelectorAll<HTMLButtonElement>(".form_exercise_button");
-    btns.forEach((btn) => {
-        btn.style.backgroundColor = "#808080";
-    });
+function input(attr: string, className: string, i: string) {
+    const input = document.createElement("input");
+    input.classList.add(className);
+    input.setAttribute(attr, i);
+    return input;
+}
+
+const test = (attr: string) => {
+    console.log(attr);
 };
