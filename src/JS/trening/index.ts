@@ -24,12 +24,12 @@ form?.addEventListener("submit", (e) => {
         data: state.currentProgram,
         date: new Date().toISOString().substring(5, 10),
     });
-    console.log(state.currentProgram);
-    // localStorage.removeItem("storedExercises");
-    // localStorage.setItem("storedExercises", JSON.stringify(state.savedExercises));
-    // state.completedExercises = [];
-    // form.reset();
-    // renderPrevExercises();
+
+    localStorage.removeItem("storedExercises");
+    localStorage.setItem("storedExercises", JSON.stringify(state.storedLocal));
+    state.currentProgram = [];
+    form.reset();
+    renderStoredLocal();
 });
 
 export const renderStoredLocal = () => {
