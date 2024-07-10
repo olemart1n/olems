@@ -1,11 +1,16 @@
+import { state } from "./state";
 const dialog = document.querySelector("dialog");
 const dialogDiv = document.querySelector("#previous_exercise_program");
 
-const closeBtn = document.querySelector("dialog button");
-import { state } from "./state";
 export const openDialog = (i: number) => {
     dialog?.showModal();
-
+    const closeBtn = document.createElement("button");
+    closeBtn.innerHTML = "Lukk";
+    closeBtn?.addEventListener("click", () => {
+        dialogDiv!.innerHTML = "";
+        closeBtn.remove();
+        dialog?.close();
+    });
     state.storedLocal[i].data.forEach((each) => {
         dialogDiv?.insertAdjacentHTML(
             "afterbegin",
@@ -22,9 +27,5 @@ export const openDialog = (i: number) => {
         `
         );
     });
+    dialog?.insertAdjacentElement("beforeend", closeBtn);
 };
-
-closeBtn?.addEventListener("click", () => {
-    dialogDiv!.innerHTML = "";
-    dialog?.close();
-});
